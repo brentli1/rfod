@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Review;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public function reviews() {
+        return $this->hasMany('App\Review');
+    }
 
     /**
      * The attributes that are mass assignable.

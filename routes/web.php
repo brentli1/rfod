@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'api'], function () {
+    Route::get('/categories', 'CategoryController@apiCategories');
+    Route::get('/movies', 'MovieController@apiMovies');
+});
