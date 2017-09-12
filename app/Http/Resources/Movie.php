@@ -18,6 +18,7 @@ class Movie extends Resource
             'id' => $this->id,
             'title' => $this->title,
             'categories' => $this->categories,
+            'release_date' => $this->release_date,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
