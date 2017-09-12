@@ -12,4 +12,8 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .autoload({
+        jquery: ['$', 'jQuery', 'window.jQuery'],
+        'popper.js/dist/umd/popper.js': ['Popper', 'window.Popper']
+    })
    .sass('resources/assets/sass/app.scss', 'public/css');

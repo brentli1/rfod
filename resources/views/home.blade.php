@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <p>landing page</p>
+    <p>This is the landing page for non admin.</p>
 
     <a href="{{ route('admin') }}">Admin</a>
 @endsection

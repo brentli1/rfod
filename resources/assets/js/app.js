@@ -1,11 +1,12 @@
 import './bootstrap';
+import 'bootstrap';
 import Vue from 'vue';
-import Vuetify from 'vuetify'
-import App from './App.vue';
+import CategoryApp from './apps/Category.vue';
 
-Vue.use(Vuetify);
+if ($('#category_app').length) {
+    new Vue({
+        el: '#category_app',
+        render: h => h(CategoryApp)
+    });
+}
 
-const app = new Vue({
-    el: '#app',
-    render: h => h(App)
-});

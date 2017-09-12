@@ -2,4 +2,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
-@import "~vuetify/dist/vuetify.min.css";
+// Bootstrap
+@import "bootstrap-overrides";
+@import "~bootstrap/scss/bootstrap";

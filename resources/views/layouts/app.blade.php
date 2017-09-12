@@ -15,31 +15,29 @@
 </head>
 <body>
     <div>
-        <nav class="navbar navbar-default navbar-static-top">
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
+            <a class="navbar-brand" href="#">RFODAdmin</a>
+            <ul class="navbar-nav">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
                 @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <li class="dropdown nav-item">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
                     </li>
                 @endguest
             </ul>
@@ -47,5 +45,7 @@
 
         @yield('content')
     </div>
+
+    <script src="{{ URL::to('js/app.js') }}"></script>
 </body>
 </html>
