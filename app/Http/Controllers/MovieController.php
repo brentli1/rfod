@@ -8,7 +8,11 @@ use App\Movie;
 
 class MovieController extends Controller
 {
-    public function apiMovies() {
-        return MovieResource::collection(Movie::all());
+    public function index() {
+        $movies = Movie::orderBy('name', 'asc')->get();
+
+        return view('admin.movies.index', [
+            'movies' => $movies
+        ]);
     }
 }

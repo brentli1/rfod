@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.site')
 
 @section('content')
     <p>This is the landing page for non admin.</p>
