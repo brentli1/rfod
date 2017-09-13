@@ -23,4 +23,50 @@ class CategoryController extends Controller
             'category' => $category
         ]);
     }
+
+    public function new() {
+        $category = new Category();
+
+        return view('admin.categories.new', [
+            'category' => $category
+        ]);
+    }
+
+    public function create(Request $request) {
+        $this->validate($request, [
+            'name' => 'required|unique:categories'
+        ]);
+
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->route('admin.categories.show', ['id' => $category->id])->with([
+            'success' => 'Category Added!'
+        ]);
+    }
+
+    public function edit(Request $request, $id) {
+        $this->validate($request, [
+            'name' => 'required|unique:categories'
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->save();
+
+        return redirect()->back()->with([
+            'success' => 'Category updated!'
+        ]);
+    }
+
+    public function delete($id) {
+        $category = Category::find($id);
+        $category->movies()->detach();
+        $category->delete();
+
+        return redirect()->route('admin.categories.index')->with([
+            'success' => 'Category removed!'
+        ]);
+    }
 }

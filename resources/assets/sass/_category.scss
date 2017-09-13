@@ -1,0 +1,24 @@
+.category-form {
+    margin: 0 auto;
+    max-width: 500px;
+    position: relative;
+
+    &__delete-form {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    &__delete-btn {
+        background-color: transparent;
+        border: 0;
+        color: map-get($theme-colors, 'primary');
+        padding: 2px 4px;
+
+        &:hover {
+            background-color: transparent;
+            color: darken(map-get($theme-colors, 'primary'), 15);
+        }
+    }
+}

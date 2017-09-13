@@ -5,8 +5,18 @@
             <li class="nav-item">
                 <a href="{{ route('admin') }}" class="nav-link">Dashboard</a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('admin.categories.index') }}" class="nav-link">Categories</a>
+            <li class="dropdown nav-item">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" role="menu">
+                    <a class="dropdown-item" href="{{ route('admin.categories.index') }}">
+                        View All
+                    </a>
+                    <a class="dropdown-item" href="{{ route('admin.categories.new') }}">
+                        Create
+                    </a>
+                </div>
             </li>
             <li class="nav-item">
                 <a href="{{ route('admin.movies.index') }}" class="nav-link">Movies</a>

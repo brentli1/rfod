@@ -31,7 +31,7 @@ class CategoryTableSeeder extends Seeder
         $movie1->synopsis = "A Synopsis";
         $movie1->release_date = new DateTime();
         $movie1->save();
-        $movie1->categories([$cat1, $cat2]);
+        $movie1->categories()->attach($cat2);
 
         $movie2 = new Movie();
         $movie2->title = "Friday the 13th";
@@ -39,6 +39,6 @@ class CategoryTableSeeder extends Seeder
         $movie2->synopsis = "A Synopsis";
         $movie2->release_date = new DateTime();
         $movie2->save();
-        $movie2->categories([$cat2, $cat3]);
+        $movie2->categories()->attach($cat3);
     }
 }

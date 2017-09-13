@@ -28,10 +28,30 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
             'uses' => 'CategoryController@index',
             'as' => 'admin.categories.index'
         ]);
+
+        Route::get('/new', [
+            'uses' => 'CategoryController@new',
+            'as' => 'admin.categories.new'
+        ]);
     
         Route::get('/{id}', [
             'uses' => 'CategoryController@show',
             'as' => 'admin.categories.show'
+        ]);
+
+        Route::post('/new', [
+            'uses' => 'CategoryController@create',
+            'as' => 'admin.categories.create'
+        ]);
+    
+        Route::post('/{id}', [
+            'uses' => 'CategoryController@edit',
+            'as' => 'admin.categories.edit'
+        ]);
+
+        Route::delete('/{id}', [
+            'uses' => 'CategoryController@delete',
+            'as' => 'admin.categories.destroy'
         ]);
     });
 

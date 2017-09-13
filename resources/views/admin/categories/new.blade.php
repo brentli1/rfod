@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-    <p class="lead">Welcome to the {{ $category->name }}</p>
+    <p class="lead">Create New Category</p>
 
     @include('admin.partials.info-box')
 
     @include('admin.categories.form', [
         'category' => $category,
-        'isNew' => false
+        'isNew' => true
     ])
 @endsection
