@@ -16,10 +16,10 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function adminShow($id) {
+    public function edit($id) {
         $category = Category::find($id);
 
-        return view('admin.categories.show', [
+        return view('admin.categories.edit', [
             'category' => $category
         ]);
     }
@@ -41,12 +41,12 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('admin.categories.show', ['id' => $category->id])->with([
+        return redirect()->route('admin.categories.edit', ['id' => $category->id])->with([
             'success' => 'Category Added!'
         ]);
     }
 
-    public function edit(Request $request, $id) {
+    public function update(Request $request, $id) {
         $this->validate($request, [
             'name' => 'required|unique:categories'
         ]);

@@ -16,7 +16,7 @@ class MovieCategories extends Migration
         Schema::create('movie_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('movie_id');
-            $table->integer('category_id');
+            $table->integer('category_id')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class MovieCategories extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('movie_categories');
     }
 }

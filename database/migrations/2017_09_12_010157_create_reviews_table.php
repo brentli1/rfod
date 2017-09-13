@@ -17,7 +17,8 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->text('review');
             $table->integer('score');
-            $table->integer('user_id');
+            $table->integer('user_id')->default(0);
+            $table->integer('movie_id')->default(0);
             $table->timestamps();
         });
     }

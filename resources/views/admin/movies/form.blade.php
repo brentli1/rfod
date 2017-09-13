@@ -1,5 +1,5 @@
 <div class="admin-form">
-    <form method="post" action="{{ $isNew ? route('admin.movies.create') : route('admin.movies.edit', ['id' => $movie->id]) }}">
+    <form method="post" action="{{ $isNew ? route('admin.movies.create') : route('admin.movies.update', ['id' => $movie->id]) }}">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ $movie->title }}">

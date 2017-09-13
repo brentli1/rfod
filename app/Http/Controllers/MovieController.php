@@ -9,7 +9,7 @@ use App\Category;
 
 class MovieController extends Controller
 {
-    public function index() {
+    public function adminIndex() {
         $movies = Movie::orderBy('title', 'asc')->get();
 
         return view('admin.movies.index', [
@@ -17,11 +17,11 @@ class MovieController extends Controller
         ]);
     }
 
-    public function show($id) {
+    public function edit($id) {
         $movie = Movie::find($id);
         $categories = Category::pluck('name', 'id');
 
-        return view('admin.movies.show', [
+        return view('admin.movies.edit', [
             'movie' => $movie,
             'categories' => $categories
         ]);
@@ -44,12 +44,12 @@ class MovieController extends Controller
         $movie = $this->saveMovieValues($movie, $request);
         $movie->categories()->attach($request->categories);
 
-        return redirect()->route('admin.movies.show', ['id' => $movie->id])->with([
+        return redirect()->route('admin.movies.edit', ['id' => $movie->id])->with([
             'success' => 'Movie Added!'
         ]);
     }
 
-    public function edit(Request $request, $id) {
+    public function update(Request $request, $id) {
         $this->validateMovie($request);
 
         $movie = Movie::find($id);

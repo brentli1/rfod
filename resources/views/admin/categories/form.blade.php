@@ -1,5 +1,5 @@
 <div class="admin-form">
-    <form method="post" action="{{ $isNew ? route('admin.categories.create') : route('admin.categories.edit', ['id' => $category->id]) }}">
+    <form method="post" action="{{ $isNew ? route('admin.categories.create') : route('admin.categories.update', ['id' => $category->id]) }}">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" class="form-control" value="{{ $category->name }}">

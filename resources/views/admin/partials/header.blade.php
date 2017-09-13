@@ -37,6 +37,19 @@
                 </li>
                 <li class="dropdown nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reviews <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="{{ route('admin.reviews.index') }}">
+                            View All
+                        </a>
+                        <a class="dropdown-item" href="{{ route('admin.reviews.new') }}">
+                            Create
+                        </a>
+                    </div>
+                </li>
+                <li class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 

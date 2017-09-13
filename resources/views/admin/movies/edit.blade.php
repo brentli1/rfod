@@ -9,4 +9,8 @@
         'movie' => $movie,
         'isNew' => false
     ])
+
+    @foreach($movie->reviews as $review)
+        <br>{{$review->user->name}}
+    @endforeach
 @endsection

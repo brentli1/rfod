@@ -35,8 +35,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         ]);
     
         Route::get('/{id}', [
-            'uses' => 'CategoryController@adminShow',
-            'as' => 'admin.categories.show'
+            'uses' => 'CategoryController@edit',
+            'as' => 'admin.categories.edit'
         ]);
 
         Route::post('/new', [
@@ -45,8 +45,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         ]);
     
         Route::post('/{id}', [
-            'uses' => 'CategoryController@edit',
-            'as' => 'admin.categories.edit'
+            'uses' => 'CategoryController@update',
+            'as' => 'admin.categories.update'
         ]);
 
         Route::delete('/{id}', [
@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'movies'], function() {
         Route::get('/', [
-            'uses' => 'MovieController@index',
+            'uses' => 'MovieController@adminIndex',
             'as' => 'admin.movies.index'
         ]);
 
@@ -67,8 +67,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         ]);
 
         Route::get('/{id}', [
-            'uses' => 'MovieController@show',
-            'as' => 'admin.movies.show'
+            'uses' => 'MovieController@edit',
+            'as' => 'admin.movies.edit'
         ]);
 
         Route::post('/new', [
@@ -77,13 +77,45 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         ]);
     
         Route::post('/{id}', [
-            'uses' => 'MovieController@edit',
-            'as' => 'admin.movies.edit'
+            'uses' => 'MovieController@update',
+            'as' => 'admin.movies.update'
         ]);
 
         Route::delete('/{id}', [
             'uses' => 'MovieController@delete',
             'as' => 'admin.movies.destroy'
+        ]);
+    });
+
+    Route::group(['prefix' => 'reviews'], function() {
+        Route::get('/', [
+            'uses' => 'ReviewController@adminIndex',
+            'as' => 'admin.reviews.index'
+        ]);
+
+        Route::get('/new', [
+            'uses' => 'ReviewController@new',
+            'as' => 'admin.reviews.new'
+        ]);
+
+        Route::get('/{id}', [
+            'uses' => 'ReviewController@edit',
+            'as' => 'admin.reviews.edit'
+        ]);
+
+        Route::post('/new', [
+            'uses' => 'ReviewController@create',
+            'as' => 'admin.reviews.create'
+        ]);
+    
+        Route::post('/{id}', [
+            'uses' => 'ReviewController@update',
+            'as' => 'admin.reviews.update'
+        ]);
+
+        Route::delete('/{id}', [
+            'uses' => 'ReviewController@delete',
+            'as' => 'admin.reviews.destroy'
         ]);
     });
 });
