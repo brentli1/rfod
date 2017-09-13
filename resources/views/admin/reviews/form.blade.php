@@ -8,7 +8,7 @@
             <label for="movie">Movie</label>
             {!! Form::select('movie[]', 
             $movies, 
-            $review->movie->pluck('id'), 
+            $review->movie->id, 
             ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
