@@ -25,7 +25,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'categories'], function() {
         Route::get('/', [
-            'uses' => 'CategoryController@index',
+            'uses' => 'CategoryController@adminIndex',
             'as' => 'admin.categories.index'
         ]);
 
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         ]);
     
         Route::get('/{id}', [
-            'uses' => 'CategoryController@show',
+            'uses' => 'CategoryController@adminShow',
             'as' => 'admin.categories.show'
         ]);
 

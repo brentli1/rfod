@@ -8,7 +8,7 @@ use App\Category;
 
 class CategoryController extends Controller
 {
-    public function index() {
+    public function adminIndex() {
         $categories = Category::orderBy('name', 'asc')->get();
 
         return view('admin.categories.index', [
@@ -16,7 +16,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function show($id) {
+    public function adminShow($id) {
         $category = Category::find($id);
 
         return view('admin.categories.show', [
