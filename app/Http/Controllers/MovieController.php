@@ -9,10 +9,18 @@ use App\Movie;
 class MovieController extends Controller
 {
     public function index() {
-        $movies = Movie::orderBy('name', 'asc')->get();
+        $movies = Movie::orderBy('title', 'asc')->get();
 
         return view('admin.movies.index', [
             'movies' => $movies
+        ]);
+    }
+
+    public function show($id) {
+        $movie = Movie::find($id);
+
+        return view('admin.movies.show', [
+            'movie' => $movie
         ]);
     }
 }

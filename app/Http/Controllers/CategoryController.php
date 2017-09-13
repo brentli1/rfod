@@ -15,4 +15,12 @@ class CategoryController extends Controller
             'categories' => $categories
         ]);
     }
+
+    public function show($id) {
+        $category = Category::find($id);
+
+        return view('admin.categories.show', [
+            'category' => $category
+        ]);
+    }
 }

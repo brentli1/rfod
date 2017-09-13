@@ -29,9 +29,21 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
             'as' => 'admin.categories.index'
         ]);
     
-        Route::get('/{$id}', [
+        Route::get('/{id}', [
             'uses' => 'CategoryController@show',
             'as' => 'admin.categories.show'
+        ]);
+    });
+
+    Route::group(['prefix' => 'movies'], function() {
+        Route::get('/', [
+            'uses' => 'MovieController@index',
+            'as' => 'admin.movies.index'
+        ]);
+
+        Route::get('/{id}', [
+            'uses' => 'MovieController@show',
+            'as' => 'admin.movies.show'
         ]);
     });
 });

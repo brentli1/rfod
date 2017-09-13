@@ -8,6 +8,9 @@
             <li class="nav-item">
                 <a href="{{ route('admin.categories.index') }}" class="nav-link">Categories</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.movies.index') }}" class="nav-link">Movies</a>
+            </li>
             <li class="dropdown nav-item">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ Auth::user()->name }} <span class="caret"></span>
