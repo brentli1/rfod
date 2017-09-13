@@ -1,5 +1,7 @@
 import './bootstrap';
 import 'bootstrap';
+import 'selectize';
+
 // import Vue from 'vue';
 // import CategoryApp from './apps/Category.vue';
 
@@ -9,3 +11,5 @@ import 'bootstrap';
 //         render: h => h(CategoryApp)
 //     });
 // }
+
+$('select').selectize();

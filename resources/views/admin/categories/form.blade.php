@@ -1,4 +1,4 @@
-<div class="category-form">
+<div class="admin-form">
     <form method="post" action="{{ $isNew ? route('admin.categories.create') : route('admin.categories.edit', ['id' => $category->id]) }}">
         <div class="form-group">
             <label for="name">Name</label>
@@ -9,10 +9,10 @@
     </form>
 
     @if(!$isNew)
-        <form action="{{ route('admin.categories.destroy', ['id' => $category->id]) }}" method="POST" class="category-form__delete-form">
+        <form action="{{ route('admin.categories.destroy', ['id' => $category->id]) }}" method="POST" class="admin-form__delete-form">
             {{ method_field('DELETE') }}
             {{ csrf_field() }}
-            <button type="submit" class="category-form__delete-btn btn btn-secondary"><i class="fa fa-trash"></i></button>
+            <button type="submit" class="admin-form__delete-btn btn btn-secondary"><i class="fa fa-trash"></i></button>
         </form>
     @endif
 </div>

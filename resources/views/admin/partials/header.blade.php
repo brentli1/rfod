@@ -22,8 +22,18 @@
                         </a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.movies.index') }}" class="nav-link">Movies</a>
+                <li class="dropdown nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Movies <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="{{ route('admin.movies.index') }}">
+                            View All
+                        </a>
+                        <a class="dropdown-item" href="{{ route('admin.movies.new') }}">
+                            Create
+                        </a>
+                    </div>
                 </li>
                 <li class="dropdown nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

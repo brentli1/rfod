@@ -6,4 +6,6 @@
 @import "bootstrap-overrides";
 @import "~bootstrap/scss/bootstrap";
 
-@import 'category';
+@import '~selectize/dist/css/selectize.bootstrap3.css';
+
+@import 'admin';

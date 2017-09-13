@@ -61,9 +61,29 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
             'as' => 'admin.movies.index'
         ]);
 
+        Route::get('/new', [
+            'uses' => 'MovieController@new',
+            'as' => 'admin.movies.new'
+        ]);
+
         Route::get('/{id}', [
             'uses' => 'MovieController@show',
             'as' => 'admin.movies.show'
+        ]);
+
+        Route::post('/new', [
+            'uses' => 'MovieController@create',
+            'as' => 'admin.movies.create'
+        ]);
+    
+        Route::post('/{id}', [
+            'uses' => 'MovieController@edit',
+            'as' => 'admin.movies.edit'
+        ]);
+
+        Route::delete('/{id}', [
+            'uses' => 'MovieController@delete',
+            'as' => 'admin.movies.destroy'
         ]);
     });
 });
