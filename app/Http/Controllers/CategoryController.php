@@ -33,13 +33,10 @@ class CategoryController extends Controller
     }
 
     public function create(Request $request) {
-        $this->validate($request, [
-            'name' => 'required|unique:categories'
-        ]);
+        $this->validateCategory($request);
 
         $category = new Category();
-        $category->name = $request->name;
-        $category->save();
+        $category = $this->saveCategoryValues($request);
 
         return redirect()->route('admin.categories.edit', ['id' => $category->id])->with([
             'success' => 'Category Added!'
@@ -47,13 +44,10 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id) {
-        $this->validate($request, [
-            'name' => 'required|unique:categories'
-        ]);
+        $this->validateCategory($request);
 
         $category = Category::find($id);
-        $category->name = $request->name;
-        $category->save();
+        $category = $this->saveCategoryValues($request);
 
         return redirect()->back()->with([
             'success' => 'Category updated!'
@@ -68,5 +62,18 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')->with([
             'success' => 'Category removed!'
         ]);
+    }
+
+    private function validateCategory($request) {
+        $this->validate($request, [
+            'name' => 'required|unique:categories'
+        ]);
+    }
+
+    private function saveCategoryValues($category, $request) {
+        $category->name = $request->name;
+        $category->save();
+
+        return $category;
     }
 }
