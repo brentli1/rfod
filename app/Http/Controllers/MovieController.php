@@ -64,6 +64,7 @@ class MovieController extends Controller
     public function delete($id) {
         $movie = Movie::find($id);
         $movie->categories()->detach();
+        $movie->reviews()->delete();
         $movie->delete();
 
         return redirect()->route('admin.movies.index')->with([

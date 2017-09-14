@@ -44,7 +44,12 @@ class ReviewController extends Controller
         $review = new Review();
 
         // Check if user already made a review for the selected movie
-        $this->checkExistingReview($request);
+        $existingReview = Movie::find($request->movie[0])->reviews()->where('user_id', Auth::user()->id)->first();
+        if ($existingReview) {
+            return redirect()->back()->with([
+                'failure' => "You've already added a review for this movie!"
+            ]);
+        }
 
         $review = $this->saveReviewValues($review, $request);
 
@@ -90,14 +95,5 @@ class ReviewController extends Controller
         $review->save();
 
         return $review;
-    }
-
-    private function checkExistingReview($request) {
-        $existingReview = Movie::find($request->movie[0])->reviews()->where('user_id', Auth::user()->id)->first();
-        if ($existingReview) {
-            return redirect()->back()->with([
-                'failure' => "You've already added a review for this movie!"
-            ]);
-        }
     }
 }

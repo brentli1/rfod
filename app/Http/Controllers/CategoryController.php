@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $this->validateCategory($request);
 
         $category = new Category();
-        $category = $this->saveCategoryValues($request);
+        $category = $this->saveCategoryValues($category, $request);
 
         return redirect()->route('admin.categories.edit', ['id' => $category->id])->with([
             'success' => 'Category Added!'
@@ -80,7 +80,7 @@ class CategoryController extends Controller
         $this->validateCategory($request);
 
         $category = Category::find($id);
-        $category = $this->saveCategoryValues($request);
+        $category = $this->saveCategoryValues($category, $request);
 
         return redirect()->back()->with([
             'success' => 'Category updated!'
