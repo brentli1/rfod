@@ -6,8 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Category as CategoryResource;
 use App\Category;
 
+/**
+ * Class CategoryController
+ * @package App\Http\Controllers
+ */
 class CategoryController extends Controller
 {
+    /**
+     * Fetch all categories and show categories index view.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function adminIndex() {
         $categories = Category::orderBy('name', 'asc')->get();
 
@@ -16,6 +25,12 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * Fetch category and show categories edit view.
+     *
+     * @param  int $id ID for the requested category.
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id) {
         $category = Category::find($id);
 
@@ -24,6 +39,11 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * Instantiate new category model and show category new view.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function new() {
         $category = new Category();
 
@@ -32,6 +52,12 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * Create new Category and redirect to Category view.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function create(Request $request) {
         $this->validateCategory($request);
 
@@ -43,6 +69,13 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * Update existing Category with modified values.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param int $id ID of the Category to update.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id) {
         $this->validateCategory($request);
 
@@ -54,6 +87,12 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * Delete the requested Category and remove Movie associations.
+     *
+     * @param  int $id ID of the Category for deletion.
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete($id) {
         $category = Category::find($id);
         $category->movies()->detach();
@@ -64,12 +103,25 @@ class CategoryController extends Controller
         ]);
     }
 
+    /**
+     * Validate the Category request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return void|array Returns array of errors if validation errors present.
+     */
     private function validateCategory($request) {
         $this->validate($request, [
             'name' => 'required|unique:categories'
         ]);
     }
 
+    /**
+     * Save Category values.
+     *
+     * @param  App\Category $category
+     * @param  \Illuminate\Http\Request $request
+     * @return App\Category
+     */
     private function saveCategoryValues($category, $request) {
         $category->name = $request->name;
         $category->save();
