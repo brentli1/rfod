@@ -1,5 +1,5 @@
 <div class="admin-form">
-    <form method="post" action="{{ $isNew ? route('admin.movies.create') : route('admin.movies.update', ['id' => $movie->id]) }}">
+    <form method="post" files="true" enctype="multipart/form-data" action="{{ $isNew ? route('admin.movies.create') : route('admin.movies.update', ['id' => $movie->id]) }}">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" class="form-control" value="{{ $movie->title }}">
@@ -23,6 +23,17 @@
         <div class="form-group">
             <label for="name">Synopsis</label>
             <textarea name="synopsis" id="synopsis" cols="30" rows="10" class="form-control">{{ $movie->synopsis }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input class="form-control" type="file" name="image">
+
+            @if($movie->image)
+                <div>
+                    <div>Current Image</div>
+                    <img src="https://s3.us-east-2.amazonaws.com/codebrent-rfod/{{ $movie->image[0]->path }}" alt="{{ $movie->image[0]->name }}" class="admin-form__current-img">
+                </div>
+            @endif
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
         <input type="hidden" name="_token" value="{{ Session::token() }}">

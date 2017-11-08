@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Movie as MovieResource;
 use App\Movie;
 use App\Category;
+use App\Image;
+use App\Traits\SaveImageTrait;
 
 class MovieController extends Controller
 {
+    use SaveImageTrait;
+
     public function adminIndex() {
         $movies = Movie::orderBy('title', 'asc')->get();
 
@@ -44,6 +48,11 @@ class MovieController extends Controller
         $movie = $this->saveMovieValues($movie, $request);
         $movie->categories()->attach($request->categories);
 
+        if ($request->hasFile('image')) {
+            $this->saveImage($movie, $request->image);
+            $movie->load('image');
+        }
+
         return redirect()->route('admin.movies.edit', ['id' => $movie->id])->with([
             'success' => 'Movie Added!'
         ]);
@@ -55,6 +64,11 @@ class MovieController extends Controller
         $movie = Movie::find($id);
         $movie = $this->saveMovieValues($movie, $request);
         $movie->categories()->sync($request->categories);
+
+        if ($request->hasFile('image')) {
+            $this->saveImage($movie, $request->image);
+            $movie->load('image');
+        }
 
         return redirect()->back()->with([
             'success' => 'Movie updated!'
